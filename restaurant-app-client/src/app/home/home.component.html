@@ -1,0 +1,42 @@
+<div class="main-content" *ngIf="!waiter">
+  <div class="home-cards">
+    <!-- Карточка 1 -->
+    <div class="home-card" (click)="navigateTo('/create-order')">
+      <h2>Создать заказ</h2>
+    </div>
+
+    <!-- Карточка 2 -->
+    <div class="home-card" (click)="navigateTo('/menu')">
+      <h2>Меню</h2>
+    </div>
+
+    <!-- Карточка 3 -->
+    <div class="home-card" id="id-selector">
+      <h2>Заказы по ID сотрудника</h2>
+      <form (submit)="fetchOrders()" #form="ngForm">
+        <input type="number" name="waiterId" [(ngModel)]="waiterId" placeholder="ID" required min="1" max="999"/>
+        <button type="submit">Показать</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<p *ngIf="error" class="error-message">{{ error }}</p>
+
+<div *ngIf="waiter">
+  <div id="listOfOrders">
+    <h2 id="header">Заказы официанта {{ waiter.name }}</h2>
+    <div class="container">
+      <div *ngFor="let order of orders" class="order-card">
+        <p><strong>Заказ №{{ order.id }}</strong></p>
+        <p>Активен: {{ order.isActive ? 'Да' : 'Нет' }}</p>
+        <p>Блюда:</p>
+        <ul>
+          <li *ngFor="let item of order.items">{{ item.title }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+

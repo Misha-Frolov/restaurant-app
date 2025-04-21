@@ -1,0 +1,26 @@
+<h2 id="header">Создать заказ</h2>
+
+<p *ngIf="error" class="error-message">{{ error }}</p>
+
+<form id="create-order" (ngSubmit)="createOrder()" #orderForm="ngForm">
+  <div>
+    <label for="userId">Официант:</label>
+    <select name="userId" id="userId" [(ngModel)]="selectedWaiterId" required>
+      <option value="">Выберите официанта</option>
+      <option *ngFor="let waiter of waiters" [value]="waiter.id">
+        {{ waiter.name }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="menuItems">Пункты меню:</label>
+    <select name="menuItems" id="menuItems" [(ngModel)]="selectedMenuItems" multiple required size="5">
+      <option *ngFor="let item of menu" [value]="item.id">
+        {{ item.title }} – {{ item.cost }} руб.
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!orderForm.form.valid">Создать заказ</button>
+</form>
