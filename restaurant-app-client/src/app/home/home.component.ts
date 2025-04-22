@@ -32,7 +32,7 @@ export class HomeComponent {
         this.error = null;
       },
       error: (err) => {
-        this.error = 'Ошибка при получении заказов';
+        this.error = err.error.message || 'Ошибка при получении заказов';
         console.error(err);
       }
     });
