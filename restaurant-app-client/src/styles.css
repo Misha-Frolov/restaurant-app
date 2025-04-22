@@ -97,7 +97,7 @@ body {
   margin: 5px;
 }
 
-.order-card, .item-card {
+.home-card:not(#id-selector), .order-card, .item-card {
   cursor: pointer;
 }
 

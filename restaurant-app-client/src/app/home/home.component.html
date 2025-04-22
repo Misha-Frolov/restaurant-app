@@ -27,7 +27,7 @@
   <div id="listOfOrders">
     <h2 id="header">Заказы официанта {{ waiter.name }}</h2>
     <div class="container">
-      <div *ngFor="let order of orders" class="order-card">
+      <div *ngFor="let order of orders" class="order-card" (click)="navigateTo('/orders/' + order.id)">
         <p><strong>Заказ №{{ order.id }}</strong></p>
         <p>Активен: {{ order.isActive ? 'Да' : 'Нет' }}</p>
         <p>Блюда:</p>
