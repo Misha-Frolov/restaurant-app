@@ -1,28 +1,25 @@
 <p *ngIf="error" class="error-message">{{ error }}</p>
 
-<div *ngIf="order" id="order">
-  <p><strong>Заказ №{{ order.id }}</strong> —
-    <span [ngClass]="order.isActive ? 'active' : 'inactive'">
+<div *ngIf="order" id="order-details">
+    <p><strong>Заказ №{{ order.id }}</strong> —
+        <span [ngClass]="order.isActive ? 'active' : 'inactive'">
       {{ order.isActive ? 'активен' : 'завершен' }}
     </span>
-  </p>
+    </p>
 
-  <p><strong>Состав заказа:</strong></p>
+    <ul class="dish-list">
+        <li class="dish-item" *ngFor="let item of order.items">
+            <div class="image-wrapper">
+                <img [src]="item.picture" [alt]="item.title" class="dish-thumbnail"/>
+            </div>
+            <span>{{ item.title }}</span>
+        </li>
+    </ul>
 
-  <ul class="dish-list">
-    <li class="dish-item" *ngFor="let item of order.items">
-      <img [src]="item.picture" [alt]="item.title" class="dish-thumbnail" width="100">
-      <span>{{ item.title }}</span>
-    </li>
-  </ul>
+    <p><strong>Общая стоимость: {{ total }} руб.</strong></p>
 
-  <h3>Общая стоимость: {{ total }} руб.</h3>
-
-  <button class="back-button" (click)="goHome()">На главную</button>
-  <button
-    class="close-order-button"
-    [disabled]="!order.isActive"
-    (click)="closeOrder()">
-    Завершить заказ
-  </button>
+    <div class="buttons-container">
+        <button class="back-button" (click)="goHome()">На главную</button>
+        <button class="close-order-button" [disabled]="!order.isActive" (click)="closeOrder()">Завершить заказ</button>
+    </div>
 </div>
