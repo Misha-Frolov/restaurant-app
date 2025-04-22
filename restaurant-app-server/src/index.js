@@ -112,7 +112,7 @@ app.get('/api/menu', async (req, res) => {
     }
 });
 
-// Получить заказы определенного официанта
+// Получить активные заказы определенного официанта
 app.get('/api/waiter-orders/:id', async (req, res) => {
     try {
         const waiter = await User.findByPk(req.params.id);
@@ -121,7 +121,7 @@ app.get('/api/waiter-orders/:id', async (req, res) => {
         }
 
         const orders = await Order.findAll({
-            where: {userId: waiter.id},
+            where: {userId: waiter.id, isActive: true},
             include: [{model: MenuItem, as: 'items'}]
         });
 

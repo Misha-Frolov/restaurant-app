@@ -1,3 +1,5 @@
+<p *ngIf="error" class="error-message">{{ error }}</p>
+
 <div class="main-content" *ngIf="!waiter">
   <div class="home-cards">
     <!-- Карточка 1 -->
@@ -21,7 +23,6 @@
   </div>
 </div>
 
-<p *ngIf="error" class="error-message">{{ error }}</p>
 
 <div *ngIf="waiter">
   <div id="listOfOrders">
@@ -29,8 +30,6 @@
     <div class="container">
       <div *ngFor="let order of orders" class="order-card" (click)="navigateTo('/orders/' + order.id)">
         <p><strong>Заказ №{{ order.id }}</strong></p>
-        <p>Активен: {{ order.isActive ? 'Да' : 'Нет' }}</p>
-        <p>Блюда:</p>
         <ul>
           <li *ngFor="let item of order.items">{{ item.title }}</li>
         </ul>
