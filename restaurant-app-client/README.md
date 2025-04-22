@@ -2,17 +2,14 @@
 
 Команда `npm install` загружает зависимости.
 
-Команда `ng serve` запускает клиент.
+Команда `ng serve` запускает клиент по адресу `http://localhost:4200/`
+
+версия npm: 6.14.13.
+версия Angular: 8.2.2.
+версия Node: 14.17.3.
 
 
 
-# RestaurantApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
